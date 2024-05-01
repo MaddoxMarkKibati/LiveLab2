@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Welcome - Page</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+    <style>
+    .segment {
+      margin: 0 auto;
+      width: 95%;  /* Defines width of each segment */
+      padding: 10px;  /* Optional padding for content */
+      border: 2px solid#4F6F52 /*Changing the margin colour surrounding the segments*/
+    }
+    .segment.segment-one {
+      background-color: #1A4D2E; /* Green */
+    }
+    .segment.segment-two {
+      background-color: #F5EFE6; /* Cream */
+    }
+
+    </style>
     </head>
     <body>
+      <div class="segment segment-one">
+        <h1>Atlas Corporation</h1>
+      </div>
+      
+    <div class="segment segment-two">
         <!--Heading 1 and 2 Text-->
         <h1>About us</h1>
         <h2>Welcome to Atlas.Your global Logistics partner</h2>
@@ -25,6 +39,8 @@
         <p><strong>Technology-Driven Expertise:</strong>Our cutting-edge technology platform provides real-time tracking and insightful data to keep you informed throughout the entire shipping process.</p>
         <p><strong>Dedicated Support:</strong>Our team of experienced logistics specialists is here to provide personalized support and expert guidance at every step.</p>
 
+      </div>
+      
         <script src="" async defer></script>
     </body>
 </html>
