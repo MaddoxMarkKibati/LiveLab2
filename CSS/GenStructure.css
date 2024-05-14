@@ -1,0 +1,33 @@
+.segment {
+  margin: 0 auto;
+  width: 95%; /* Defines width of each segment */
+  padding: 10px; /* Optional padding for content */
+  background-color:#4F6F52; /* Changing the margin colour surrounding the segments*/
+}
+
+.segment.header {
+  background-color: #1A4D2E; /* Green */
+}
+
+.segment.nav {
+  overflow: hidden;
+  background-color: #4F6F52; /* Green */
+}
+
+.nav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background-color: white;
+  color: green;
+}
+
+.segment.body {
+  background-color: #F5EFE6; /* Cream */
+}
