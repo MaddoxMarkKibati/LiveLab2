@@ -31,3 +31,12 @@
 .segment.body {
   background-color: #F5EFE6; /* Cream */
 }
+
+.bg-custom {
+  background-color: #4F6F52;
+}
+
+.navbar-custom-width {
+  width: 95%;
+  margin: 0 auto;
+}
