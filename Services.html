@@ -81,6 +81,27 @@
             </tr>
           </tbody>
         </table>
+
+        <section id="service-form">
+          <h2>Request a Service</h2>
+          <form action="process_form.php" method="post">
+            <label for="service">Service:</label>
+            <select name="service" id="service">
+              <option value="oceanfreight_shipping">Ocean Freight Shipping</option>
+              <option value="airfreight_shipping">Air Freight Shipping</option>
+              <option value="express_shipping">Express Shipping</option>
+              <option value="cargo_insurance">Cargo Insurance</option>
+              <option value="local_shipping">Local Shipping</option>
+            </select>
+            <br>
+          
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" rows="5"></textarea>
+            <br>
+          
+            <button type="submit">Submit Request</button>
+          </form>
+          </section>
       
         </div>
         
