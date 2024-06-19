@@ -21,7 +21,7 @@
           <ul class="navbar-nav">
   
             <li class="nav-item">
-              <a class="nav-link" href="index.html">About Us</a>
+              <a class="nav-link" href="index.php">About Us</a>
             </li>
   
             <li class="nav-item dropdown">
@@ -29,19 +29,19 @@
                 Services
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Express.html">Express Shipping</a>
-                <a class="dropdown-item" href="Frieght.html">Freight Shipping</a>
+                <a class="dropdown-item" href="Express.php">Express Shipping</a>
+                <a class="dropdown-item" href="Frieght.php">Freight Shipping</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="CargoInsurance.html">Cargo Insurance</a>
+                <a class="dropdown-item" href="CargoInsurance.php">Cargo Insurance</a>
               </div>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="Feedback.html">Contact Us</a>
+              <a class="nav-link" href="Feedback.php">Contact Us</a>
             </li>
   
             <li class="nav-item">
-              <a class="nav-link" href="Tracking.html">Tracking</a>
+              <a class="nav-link" href="Tracking.php">Tracking</a>
             </li>
           </ul>
         </div>
@@ -67,6 +67,8 @@
 
 </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>
