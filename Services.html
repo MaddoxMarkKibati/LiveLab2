@@ -84,7 +84,17 @@
 
         <section id="service-form">
           <h2>Request a Service</h2>
-          <form action="process_form.php" method="post">
+          <form action="process_form.php" method="post">            
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name" required>
+            <span id="name-error"></span>
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <span id="email-error"></span>
+            <br>
+
             <label for="service">Service:</label>
             <select name="service" id="service">
               <option value="oceanfreight_shipping">Ocean Freight Shipping</option>
@@ -98,13 +108,23 @@
             <label for="description">Description:</label>
             <textarea name="description" id="description" rows="5"></textarea>
             <br>
-          
+
+            <label for="from-date">From Date:</label>
+            <input type="date" name="from-date" id="from-date" required>
+            <span id="date-error"></span>
+            <br>
+        
+            <label for="to-date">To Date:</label>
+            <input type="date" name="to-date" id="to-date" required>
+            <br>
+        
             <button type="submit">Submit Request</button>
           </form>
           </section>
       
         </div>
-        
+
+        <script src="script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
