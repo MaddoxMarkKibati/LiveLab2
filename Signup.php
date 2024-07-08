@@ -1,57 +1,30 @@
-<!DOCTYPE html> <!--Specifies that the document is written in HTML-->
+<?php include_once("Templates/Header.php");
+      include_once("Templates/Nav.php"); 
+      require_once("Connection/DBConnect.php");
 
-<html>
-    <head>
-      <title>Atlas Corporation</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-      <link rel="stylesheet" href="CSS/GenStructure.css"> <!--Link to GenStructure external CSS-->
-    </head>
-
-    <body>
-        <div class="segment header"> <!--Class for header section-->
-          <h1 style="color: #FFFFFF">Atlas Corporation</h1> <!--Formatting the text to have a white font colour-->
-          </div>
-
-          <nav class="navbar navbar-expand-lg navbar-light bg-custom navbar-custom-width">
-            <div class="container">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
+      if(isset($_POST["sign_up"])){
+        $fullname = $_POST["fullname"];
+        $email = mysqli_real_escape_string($conn, $_POST["email"]);
+        $username = mysqli_real_escape_string($conn, $_POST["username"]);
+        $password = mysqli_real_escape_string($conn, $_POST["password"]);
+        $genderId = mysqli_real_escape_string($conn, $_POST["genderId"]);
+        $roleId = mysqli_real_escape_string($conn, $_POST["roleId"]);
+    
+        $insert_user = "INSERT INTO users (fullname, email, username, password, genderId, roleId, datecreated, dateupdated) 
+        VALUES ('$fullname', '$email', '$username', '$password', '$genderId', '$roleId', NOW(), NOW())";
         
-                <ul class="navbar-nav">
-        
-                  <li class="nav-item">
-                    <a class="nav-link" href="index.php">About Us</a>
-                  </li>
-        
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Services
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="Express.php">Express Shipping</a>
-                      <a class="dropdown-item" href="Frieght.php">Freight Shipping</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="CargoInsurance.php">Cargo Insurance</a>
-                    </div>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="Feedback.php">Contact Us</a>
-                  </li>
-        
-                  <li class="nav-item">
-                    <a class="nav-link" href="Tracking.php">Tracking</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+        $conn->query($insert_user);
+    }
+?>
             
-        <div class="segment body"> <!--Class for body/main content section-->
+        <!--Class for body/main content section-->
             <h2>Sign Up</h2>
-            <form action="signup.php" method="post">  <label for="username">Username:</label>
+            <form action="signup.php" method="post">  
+              <label for="fullname">Fullname:</label>
+              <input type="text" name="fullname" id="fullname" required>
+              <br>
+
+              <label for="username">Username:</label>
               <input type="text" name="username" id="username" required>
               <br>
             
@@ -62,8 +35,34 @@
               <label for="password">Password:</label>
               <input type="password" name="password" id="password" required>
               <br>
-            
-              <button type="submit">Sign Up</button>
+
+              <label for="genderId">Gender:</label><br>
+              <select name="genderId" id="genderId" required>
+              <option value="">--Select Gender--</option>
+              <?php
+              $sel_rol = "SELECT * FROM `gender` ORDER BY gender ASC";
+              $sel_rol_res = $conn->query($sel_rol);
+              while($sel_rol_row = $sel_rol_res->fetch_assoc()) {
+              ?>
+              <option value="<?php print $sel_rol_row["genderId"]; ?>"><?php print $sel_rol_row["gender"]; ?></option>
+              <?php } ?>
+              </select>
+              <br>
+
+              <label for="roleId">Role:</label><br>
+              <select name="roleId" id="roleId" required>
+              <option value="">--Select Role--</option>
+              <?php
+              $sel_rol = "SELECT * FROM `roles` ORDER BY role ASC";
+              $sel_rol_res = $conn->query($sel_rol);
+              while($sel_rol_row = $sel_rol_res->fetch_assoc()) {
+              ?>
+              <option value="<?php print $sel_rol_row["roleId"]; ?>"><?php print $sel_rol_row["role"]; ?></option>
+              <?php } ?>
+              </select>
+              <br>
+
+              <input type="submit" name="sign_up" value="Sign Up" >
               <br>
               <a href="SignIn.php">Have an account? Sign in instead!</a>
             </form>
@@ -71,6 +70,5 @@
         </div>
         
         <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
-</html>
+
+<?php include_once("Templates/Footer.php");?>

@@ -8,47 +8,34 @@
   <link rel="stylesheet" href="CSS/BackImg.css">  <title></title> <!--Link to BackImg external CSS which affects the formatting of the background img-->
 </head>
 
+<?php
+// Include the database connection file
+require_once("Connection/DBConnect.php");
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Get the form data
+  $name = $_POST["name"];
+  $email = $_POST["email"];
+  $message = $_POST["message"];
+
+  // Insert the data into the feedback table
+  $query = "INSERT INTO feedback (name, email, message) VALUES (?,?,?)";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param("sss", $name, $email, $message);
+  $stmt->execute();
+
+  // Close the statement and connection
+  $stmt->close();
+  $conn->close();
+
+  // Display a success message
+  echo "Thank you for your feedback!";
+}
+?>
+
 <body>
-  <div class="segment header"> <!--Class for header section-->
-    <h1 style="color: #FFFFFF">Atlas Corporation</h1> <!--Formatting the text to have a white font colour-->
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-custom navbar-custom-width">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-  
-          <ul class="navbar-nav">
-  
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">About Us</a>
-            </li>
-  
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Express.php">Express Shipping</a>
-                <a class="dropdown-item" href="Frieght.php">Freight Shipping</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="CargoInsurance.php">Cargo Insurance</a>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="Feedback.php">Contact Us</a>
-            </li>
-  
-            <li class="nav-item">
-              <a class="nav-link" href="Tracking.php">Tracking</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php include_once("Templates/Nav.php");?>
 
   <div class="segment body"> <!--Class for body/main content section-->
 
@@ -62,22 +49,24 @@
     <p>or reach us through:</p>
 
     <!-- Form to send message -->
-    <!-- Label and input field for name -->
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <br><br>
+    <form method="post">
+      <!-- Label and input field for name -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br><br>
 
-    <!-- Label and input field for email -->
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    
-    <!-- Textarea for message -->
-    <textarea id="message" name="message" rows="5" required></textarea>
-    
-    <!-- Submit button to send message -->
-    <button type="submit">Send Message</button>
+      <!-- Label and input field for email -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <!-- Textarea for message -->
+      <textarea id="message" name="message" rows="5" required></textarea>
+      
+      <!-- Submit button to send message -->
+      <button type="submit">Send Message</button>
+    </form>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <?php include_once("Templates/Footer.php");?>
 </body>
 </html>
